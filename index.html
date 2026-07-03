@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bara Soacha Academy</title>
+  <meta name="description" content="Sistema de gestión para la Academia de Fútbol Bara Soacha">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: #0D1B3E;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .splash-logo {
+      width: 96px; height: 96px;
+      background: #8B0000;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 40px;
+      color: #F0C040;
+      letter-spacing: 2px;
+      animation: pulse 1.5s ease infinite;
+    }
+    .splash-name {
+      font-family: 'Bebas Neue', 'Impact', sans-serif;
+      font-size: 36px;
+      letter-spacing: 5px;
+      color: #fff;
+    }
+    .splash-sub {
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.4);
+    }
+    .splash-bar {
+      width: 200px; height: 3px;
+      background: rgba(255,255,255,.1);
+      border-radius: 99px;
+      overflow: hidden;
+    }
+    .splash-bar-fill {
+      height: 100%;
+      background: #F0C040;
+      border-radius: 99px;
+      animation: loading 1.8s ease forwards;
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+    @keyframes loading {
+      from { width: 0; }
+      to   { width: 100%; }
+    }
+    @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+  </style>
+</head>
+<body>
+  <div class="splash-logo">BS</div>
+  <div>
+    <div class="splash-name">BARA SOACHA</div>
+    <div class="splash-sub" style="text-align:center">Academia de Fútbol</div>
+  </div>
+  <div class="splash-bar"><div class="splash-bar-fill"></div></div>
+
+  <script type="module">
+    // Detectar sesión activa y redirigir
+    import { auth }           from './js/firebase-config.js';
+    import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js';
+
+    onAuthStateChanged(auth, (user) => {
+      setTimeout(() => {
+        window.location.href = user ? './dashboard.html' : './login.html';
+      }, 1800);
+    });
+  </script>
+</body>
+</html>
