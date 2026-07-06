@@ -147,7 +147,7 @@ img { max-width: 100%; display: block; }
   width: var(--sidebar-collapsed);
 }
 
-/* Banda dorada diagonal — firma visual de Bara Soacha */
+/* Banda dorada diagonal — firma visual de Barsa Soacha */
 .sidebar::before {
   content:    '';
   position:   absolute;
@@ -1241,7 +1241,7 @@ img { max-width: 100%; display: block; }
 }
 
 /* ─── Toast personalizado ─────────────────────────────────────────────── */
-.bara-toast {
+.barsa-toast {
   font-family:   var(--font-sans) !important;
   border-radius: var(--radius-md) !important;
   font-size:     13.5px !important;

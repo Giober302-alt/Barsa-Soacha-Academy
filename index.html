@@ -3,10 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bara Soacha Academy</title>
-  <meta name="description" content="Sistema de gestión para la Academia de Fútbol Bara Soacha">
+  <title>Barsa Soacha Academy</title>
+  <meta name="description" content="Sistema de gestión para la Academia de Fútbol Barsa Soacha">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
     body {
       font-family: 'Inter', system-ui, sans-serif;
       background: #0D1B3E;
@@ -15,73 +16,132 @@
       align-items: center;
       justify-content: center;
       flex-direction: column;
-      gap: 20px;
+      gap: 16px;
     }
     .splash-logo {
-      width: 96px; height: 96px;
-      background: #8B0000;
-      border-radius: 20px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 40px;
-      color: #F0C040;
-      letter-spacing: 2px;
-      animation: pulse 1.5s ease infinite;
+      width: 120px;
+      animation: pulse 1.6s ease infinite;
+      filter: drop-shadow(0 6px 18px rgba(0,0,0,.5));
     }
     .splash-name {
       font-family: 'Bebas Neue', 'Impact', sans-serif;
-      font-size: 36px;
+      font-size: 40px;
       letter-spacing: 5px;
       color: #fff;
+      margin-top: 4px;
     }
     .splash-sub {
-      font-size: 12px;
-      letter-spacing: 2px;
+      font-size: 11px;
+      letter-spacing: 2.5px;
       text-transform: uppercase;
       color: rgba(255,255,255,.4);
     }
     .splash-bar {
-      width: 200px; height: 3px;
+      width: 180px; height: 3px;
       background: rgba(255,255,255,.1);
       border-radius: 99px;
       overflow: hidden;
+      margin-top: 8px;
     }
     .splash-bar-fill {
       height: 100%;
       background: #F0C040;
       border-radius: 99px;
-      animation: loading 1.8s ease forwards;
+      animation: loading 2s ease forwards;
     }
     @keyframes pulse {
       0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.05); }
+      50%       { transform: scale(1.04); }
     }
     @keyframes loading {
       from { width: 0; }
       to   { width: 100%; }
     }
-    @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
   </style>
 </head>
 <body>
-  <div class="splash-logo">BS</div>
+
+  <!-- Logo escudo Barsa Soacha - SVG embebido -->
+  <svg class="splash-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 220">
+    <defs>
+      <linearGradient id="ig0" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" style="stop-color:#F5D060"/>
+        <stop offset="50%" style="stop-color:#D4A017"/>
+        <stop offset="100%" style="stop-color:#A07010"/>
+      </linearGradient>
+    </defs>
+    <!-- Borde dorado del escudo -->
+    <path d="M100,8 L185,35 L185,122 Q185,186 100,213 Q15,186 15,122 L15,35 Z" fill="url(#ig0)" filter="drop-shadow(0 3px 6px rgba(0,0,0,.5))"/>
+    <!-- Fondo azul del escudo -->
+    <path d="M100,17 L177,43 L177,122 Q177,179 100,204 Q23,179 23,122 L23,43 Z" fill="#0D1B3E"/>
+    <!-- Cuadrante superior izquierdo: franjas granate+dorado -->
+    <clipPath id="ctl"><path d="M23,17 L100,17 L100,111 L23,111 Z"/></clipPath>
+    <g clip-path="url(#ctl)">
+      <rect x="23" y="17" width="77" height="94" fill="#8B0000"/>
+      <rect x="28"  y="17" width="11" height="94" fill="#D4A017" opacity=".75"/>
+      <rect x="50"  y="17" width="11" height="94" fill="#D4A017" opacity=".75"/>
+      <rect x="72"  y="17" width="11" height="94" fill="#D4A017" opacity=".75"/>
+    </g>
+    <!-- Cuadrante superior derecho: blanco con cruz roja -->
+    <clipPath id="ctr"><path d="M100,17 L177,17 L177,111 L100,111 Z"/></clipPath>
+    <g clip-path="url(#ctr)">
+      <rect x="100" y="17" width="77" height="94" fill="#FFFFFF"/>
+      <rect x="135" y="17" width="6"  height="94" fill="#C0001A" opacity=".6"/>
+      <rect x="100" y="52" width="77" height="6"  fill="#C0001A" opacity=".6"/>
+    </g>
+    <!-- Divisores dorados -->
+    <line x1="23" y1="111" x2="177" y2="111" stroke="#D4A017" stroke-width="4"/>
+    <line x1="100" y1="17"  x2="100" y2="111" stroke="#D4A017" stroke-width="3"/>
+    <!-- Parte inferior: franjas verticales azul+granate -->
+    <clipPath id="cbot"><path d="M23,111 Q23,179 100,204 Q177,179 177,122 L177,111 Z"/></clipPath>
+    <g clip-path="url(#cbot)">
+      <rect x="23"  y="109" width="22" height="100" fill="#8B0000"/>
+      <rect x="45"  y="109" width="22" height="100" fill="#0D1B3E"/>
+      <rect x="67"  y="109" width="22" height="100" fill="#8B0000"/>
+      <rect x="89"  y="109" width="22" height="100" fill="#0D1B3E"/>
+      <rect x="111" y="109" width="22" height="100" fill="#8B0000"/>
+      <rect x="133" y="109" width="22" height="100" fill="#0D1B3E"/>
+      <rect x="155" y="109" width="22" height="100" fill="#8B0000"/>
+    </g>
+    <!-- Balón de fútbol -->
+    <circle cx="100" cy="160" r="21" fill="white" stroke="#111" stroke-width="1.5"/>
+    <polygon points="100,142 108,148 105,158 95,158 92,148" fill="#111"/>
+    <polygon points="79,157 83,147 92,148 95,158 87,164"    fill="#111"/>
+    <polygon points="121,157 117,147 108,148 105,158 113,164" fill="#111"/>
+    <polygon points="86,175 87,164 95,158 105,158 113,164 114,175 100,181" fill="#111"/>
+    <!-- Banda BFC -->
+    <rect x="46" y="101" width="108" height="22" fill="#0D1B3E" rx="2"/>
+    <text x="100" y="117" font-family="Arial Black,sans-serif" font-size="14" font-weight="900"
+          fill="#D4A017" text-anchor="middle" letter-spacing="4">BFC</text>
+    <!-- Corona -->
+    <g fill="#D4A017">
+      <rect x="83"  y="4"  width="7" height="13" rx="2"/>
+      <rect x="96"  y="1"  width="8" height="16" rx="2"/>
+      <rect x="110" y="4"  width="7" height="13" rx="2"/>
+      <circle cx="86"  cy="3"  r="3"/>
+      <circle cx="100" cy="0"  r="3"/>
+      <circle cx="114" cy="3"  r="3"/>
+    </g>
+  </svg>
+
   <div>
-    <div class="splash-name">BARA SOACHA</div>
+    <div class="splash-name">BARSA SOACHA</div>
     <div class="splash-sub" style="text-align:center">Academia de Fútbol</div>
   </div>
   <div class="splash-bar"><div class="splash-bar-fill"></div></div>
 
   <script type="module">
-    // Detectar sesión activa y redirigir
-    import { auth }           from './js/firebase-config.js';
+    import { auth }               from './firebase-config.js';
     import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js';
+
+    // Aplicar tema guardado antes de renderizar
+    const t = localStorage.getItem('barsa_theme') || 'light';
+    document.documentElement.setAttribute('data-theme', t);
 
     onAuthStateChanged(auth, (user) => {
       setTimeout(() => {
         window.location.href = user ? './dashboard.html' : './login.html';
-      }, 1800);
+      }, 2000);
     });
   </script>
 </body>

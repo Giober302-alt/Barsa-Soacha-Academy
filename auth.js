@@ -1,40 +1,38 @@
 /**
  * @file auth.js
- * @description Módulo de autenticación para Bara Soacha Academy.
- *              Gestiona login, logout, registro, estado de sesión y
- *              control de acceso basado en roles usando Firebase Auth
- *              + perfil de usuario en Firestore.
+ * @description Módulo de autenticación — Barsa Soacha Academy.
+ *              ESTRUCTURA PLANA: importa firebase-config.js desde la raíz.
  * @module Auth
+ * @version 1.1.0
  */
 
+// ─── RUTA CORREGIDA: archivo en raíz, sin carpeta js/ ────────────────────────
 import { auth, db, COLLECTIONS, ROLES } from './firebase-config.js';
+
 import {
   signInWithEmailAndPassword,
   signOut,
   onAuthStateChanged,
-  sendPasswordResetEmail,
-  updateProfile
+  sendPasswordResetEmail
 } from 'https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js';
 import {
   doc, getDoc, setDoc, serverTimestamp
 } from 'https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js';
 
-// ─── Estado global de sesión ──────────────────────────────────────────────────
-let _currentUser   = null;  // Firebase User
-let _currentProfile = null; // Documento Firestore del usuario
+// ─── Estado interno de sesión ──────────────────────────────────────────────────
+let _currentUser    = null;
+let _currentProfile = null;
 
-// ─── Observador de sesión ─────────────────────────────────────────────────────
-
+// ─── Observador de estado de sesión ──────────────────────────────────────────
 /**
- * Registra un callback que se ejecuta cuando cambia el estado de autenticación.
- * Envuelve onAuthStateChanged de Firebase y enriquece el usuario con su perfil.
- * @param {Function} callback - Recibe (firebaseUser, firestoreProfile) o (null, null)
- * @returns {Function} Unsubscribe function
+ * Registra un callback que se ejecuta al cambiar el estado de autenticación.
+ * @param {Function} callback — recibe (firebaseUser, firestoreProfile) o (null, null)
+ * @returns {Function} unsubscribe
  */
 export const onSessionChange = (callback) => {
   return onAuthStateChanged(auth, async (firebaseUser) => {
     if (firebaseUser) {
-      const profile = await fetchUserProfile(firebaseUser.uid);
+      const profile   = await fetchUserProfile(firebaseUser.uid);
       _currentUser    = firebaseUser;
       _currentProfile = profile;
       callback(firebaseUser, profile);
@@ -46,13 +44,12 @@ export const onSessionChange = (callback) => {
   });
 };
 
-// ─── Login / Logout ───────────────────────────────────────────────────────────
-
+// ─── Login ────────────────────────────────────────────────────────────────────
 /**
  * Inicia sesión con correo y contraseña.
  * @param {string} email
  * @param {string} password
- * @returns {Promise<{ success: boolean, user?: Object, profile?: Object, error?: string }>}
+ * @returns {Promise<{success:boolean, user?:Object, profile?:Object, error?:string}>}
  */
 export const login = async (email, password) => {
   try {
@@ -82,21 +79,20 @@ export const login = async (email, password) => {
   }
 };
 
-/**
- * Cierra la sesión del usuario actual.
- * @returns {Promise<void>}
- */
+// ─── Logout ───────────────────────────────────────────────────────────────────
+/** Cierra la sesión y redirige al login. */
 export const logout = async () => {
   await signOut(auth);
   _currentUser    = null;
   _currentProfile = null;
-  window.location.href = getBasePath() + 'login.html';
+  window.location.href = './login.html';
 };
 
+// ─── Reset de contraseña ──────────────────────────────────────────────────────
 /**
- * Envía un correo de restablecimiento de contraseña.
+ * Envía correo de restablecimiento de contraseña.
  * @param {string} email
- * @returns {Promise<{ success: boolean, error?: string }>}
+ * @returns {Promise<{success:boolean, error?:string}>}
  */
 export const sendPasswordReset = async (email) => {
   try {
@@ -107,10 +103,9 @@ export const sendPasswordReset = async (email) => {
   }
 };
 
-// ─── Perfil de usuario en Firestore ──────────────────────────────────────────
-
+// ─── Perfil de Firestore ──────────────────────────────────────────────────────
 /**
- * Recupera el perfil de un usuario desde Firestore.
+ * Recupera el perfil del usuario desde Firestore.
  * @param {string} uid
  * @returns {Promise<Object|null>}
  */
@@ -125,11 +120,9 @@ export const fetchUserProfile = async (uid) => {
 };
 
 /**
- * Crea el perfil de un nuevo usuario en Firestore.
- * Llamar después de crear el usuario en Firebase Auth.
+ * Crea o actualiza el perfil de un usuario en Firestore.
  * @param {string} uid
  * @param {Object} profileData
- * @returns {Promise<void>}
  */
 export const createUserProfile = async (uid, profileData) => {
   await setDoc(doc(db, COLLECTIONS.USERS, uid), {
@@ -140,136 +133,95 @@ export const createUserProfile = async (uid, profileData) => {
   });
 };
 
-// ─── Getters de sesión activa ─────────────────────────────────────────────────
-
-/** @returns {import('firebase/auth').User|null} */
+// ─── Getters de sesión ────────────────────────────────────────────────────────
 export const getCurrentUser    = () => _currentUser;
-
-/** @returns {Object|null} Perfil de Firestore del usuario actual */
 export const getCurrentProfile = () => _currentProfile;
-
-/** @returns {string|null} Rol del usuario actual */
 export const getCurrentRole    = () => _currentProfile?.role || null;
 
-// ─── Control de acceso basado en roles ───────────────────────────────────────
-
+// ─── Control de acceso por roles ──────────────────────────────────────────────
 /**
- * Verifica si el usuario actual tiene al menos el nivel de rol indicado.
- * @param {string} requiredRoleKey - Ej: 'admin', 'coordinator', 'coach'
+ * Verifica si el usuario tiene al menos el nivel de rol indicado.
+ * @param {string} requiredRoleKey
  * @returns {boolean}
  */
 export const hasRole = (requiredRoleKey) => {
-  const profile = _currentProfile;
-  if (!profile) return false;
-
-  const currentLevel  = ROLES[profile.role?.toUpperCase()]?.level || 0;
+  if (!_currentProfile) return false;
+  const currentLevel  = ROLES[_currentProfile.role?.toUpperCase()]?.level || 0;
   const requiredLevel = ROLES[requiredRoleKey?.toUpperCase()]?.level || 99;
   return currentLevel >= requiredLevel;
 };
 
 /**
- * Verifica si el usuario puede realizar una operación específica.
- * Tabla de permisos centralizada del sistema.
- * @param {string} operation - Ej: 'create:student', 'read:payments', 'delete:user'
+ * Verifica permisos por operación.
+ * @param {string} operation — ej: 'create:student', 'read:payments'
  * @returns {boolean}
  */
 export const can = (operation) => {
   const role = getCurrentRole();
   if (!role) return false;
-
   const permissions = {
-    admin: ['*'],   // Acceso total
-    coordinator: [
-      'create:student', 'read:student', 'update:student',
-      'create:attendance', 'read:attendance', 'update:attendance',
-      'read:payments', 'create:payments', 'update:payments',
-      'read:tournaments', 'create:tournaments',
-      'read:schedules', 'create:schedules',
-      'read:announcements', 'create:announcements',
-      'read:coaches', 'read:categories',
-      'read:reports'
-    ],
-    coach: [
-      'create:attendance', 'read:attendance', 'update:attendance',
-      'read:student', 'read:schedules', 'read:categories',
-      'read:announcements'
-    ],
-    parent: [
-      'read:attendance:own', 'read:payments:own',
-      'read:schedules', 'read:announcements', 'read:tournaments'
-    ]
+    admin:       ['*'],
+    coordinator: ['create:student','read:student','update:student',
+                  'create:attendance','read:attendance','update:attendance',
+                  'read:payments','create:payments','update:payments',
+                  'read:tournaments','create:tournaments',
+                  'read:schedules','create:schedules',
+                  'read:announcements','create:announcements',
+                  'read:coaches','read:categories','read:reports'],
+    coach:       ['create:attendance','read:attendance','update:attendance',
+                  'read:student','read:schedules','read:categories','read:announcements'],
+    parent:      ['read:attendance:own','read:payments:own',
+                  'read:schedules','read:announcements','read:tournaments']
   };
-
   const userPerms = permissions[role] || [];
   if (userPerms.includes('*')) return true;
-  return userPerms.includes(operation) || userPerms.includes(operation.split(':')[0] + ':*');
+  return userPerms.includes(operation);
 };
 
 /**
- * Protege una página: si no hay sesión activa, redirige al login.
- * Si se pasa `requiredRole`, valida también el permiso de rol.
- * @param {string} [requiredRole]
- * @returns {Promise<Object|false>} El perfil si tiene acceso, false si no.
+ * Protege una página: redirige al login si no hay sesión.
+ * @param {string|null} requiredRole
+ * @returns {Promise<Object|false>}
  */
 export const requireAuth = (requiredRole = null) => {
   return new Promise((resolve) => {
     const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
       unsubscribe();
-
       if (!firebaseUser) {
-        window.location.href = getBasePath() + 'login.html';
+        window.location.href = './login.html';
         resolve(false);
         return;
       }
-
       const profile = await fetchUserProfile(firebaseUser.uid);
       if (!profile || profile.active === false) {
         await signOut(auth);
-        window.location.href = getBasePath() + 'login.html';
+        window.location.href = './login.html';
         resolve(false);
         return;
       }
-
       _currentUser    = firebaseUser;
       _currentProfile = profile;
-
       if (requiredRole && !hasRole(requiredRole)) {
-        window.location.href = getBasePath() + 'dashboard.html?error=unauthorized';
+        window.location.href = './dashboard.html?error=unauthorized';
         resolve(false);
         return;
       }
-
       resolve(profile);
     });
   });
 };
 
-// ─── Helpers ──────────────────────────────────────────────────────────────────
-
-/**
- * Traduce los códigos de error de Firebase Auth a mensajes en español.
- * @param {string} code
- * @returns {string}
- */
+// ─── Traducción de errores Firebase ──────────────────────────────────────────
 const parseAuthError = (code) => {
-  const errors = {
-    'auth/user-not-found':       'No existe una cuenta con ese correo.',
-    'auth/wrong-password':       'Contraseña incorrecta.',
-    'auth/invalid-email':        'El formato del correo no es válido.',
-    'auth/user-disabled':        'Esta cuenta ha sido deshabilitada.',
-    'auth/too-many-requests':    'Demasiados intentos fallidos. Intenta más tarde.',
-    'auth/network-request-failed':'Sin conexión a internet. Verifica tu red.',
-    'auth/invalid-credential':   'Correo o contraseña incorrectos.',
-    'auth/email-already-in-use': 'Ya existe una cuenta con ese correo.'
+  const map = {
+    'auth/user-not-found':        'No existe una cuenta con ese correo.',
+    'auth/wrong-password':        'Contraseña incorrecta.',
+    'auth/invalid-email':         'El formato del correo no es válido.',
+    'auth/user-disabled':         'Esta cuenta ha sido deshabilitada.',
+    'auth/too-many-requests':     'Demasiados intentos fallidos. Intenta más tarde.',
+    'auth/network-request-failed':'Sin conexión a internet.',
+    'auth/invalid-credential':    'Correo o contraseña incorrectos.',
+    'auth/email-already-in-use':  'Ya existe una cuenta con ese correo.'
   };
-  return errors[code] || `Error de autenticación (${code}).`;
-};
-
-/**
- * Calcula la ruta base según la ubicación del HTML actual.
- * @returns {string}
- */
-const getBasePath = () => {
-  const path = window.location.pathname;
-  return path.includes('/pages/') ? '../' : './';
+  return map[code] || `Error de autenticación (${code}).`;
 };

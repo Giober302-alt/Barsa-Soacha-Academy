@@ -3,37 +3,86 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dashboard — Bara Soacha Academy</title>
+  <title>Dashboard — Barsa Soacha Academy</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <!-- Fuentes -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Bebas+Neue&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-  <!-- CSS de terceros -->
+  <!-- CDN -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.12.4/sweetalert2.min.css" rel="stylesheet">
 
-  <!-- Estilos propios -->
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/responsive.css">
+  <!-- CSS propios — ESTRUCTURA PLANA -->
+  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./responsive.css">
 </head>
-
 <body>
 
-<!-- ═══════════════════════════════════ APP SHELL ══════════════════════════════════ -->
 <div class="app-shell">
 
-  <!-- ────────────────────── SIDEBAR ────────────────────── -->
-  <nav id="sidebar" class="sidebar" aria-label="Navegación principal">
+  <!-- ══════════════════ SIDEBAR ══════════════════ -->
+  <nav id="sidebar" class="sidebar">
 
-    <!-- Marca / Logo -->
+    <!-- Marca con logo escudo SVG embebido -->
     <div class="sidebar-brand">
-      <div class="brand-logo" aria-hidden="true">BS</div>
+      <div class="brand-logo" style="background:transparent;width:44px;height:44px;padding:0;box-shadow:none;border-radius:0">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 220" style="width:44px;height:44px">
+          <defs>
+            <linearGradient id="sg1" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" style="stop-color:#F5D060"/>
+              <stop offset="50%" style="stop-color:#D4A017"/>
+              <stop offset="100%" style="stop-color:#A07010"/>
+            </linearGradient>
+          </defs>
+          <path d="M100,8 L185,35 L185,122 Q185,186 100,213 Q15,186 15,122 L15,35 Z" fill="url(#sg1)"/>
+          <path d="M100,17 L177,43 L177,122 Q177,179 100,204 Q23,179 23,122 L23,43 Z" fill="#0D1B3E"/>
+          <clipPath id="sctl"><path d="M23,17 L100,17 L100,111 L23,111 Z"/></clipPath>
+          <g clip-path="url(#sctl)">
+            <rect x="23" y="17" width="77" height="94" fill="#8B0000"/>
+            <rect x="28"  y="17" width="11" height="94" fill="#D4A017" opacity=".75"/>
+            <rect x="50"  y="17" width="11" height="94" fill="#D4A017" opacity=".75"/>
+            <rect x="72"  y="17" width="11" height="94" fill="#D4A017" opacity=".75"/>
+          </g>
+          <clipPath id="sctr"><path d="M100,17 L177,17 L177,111 L100,111 Z"/></clipPath>
+          <g clip-path="url(#sctr)">
+            <rect x="100" y="17" width="77" height="94" fill="#FFFFFF"/>
+            <rect x="135" y="17" width="6"  height="94" fill="#C0001A" opacity=".6"/>
+            <rect x="100" y="52" width="77" height="6"  fill="#C0001A" opacity=".6"/>
+          </g>
+          <line x1="23" y1="111" x2="177" y2="111" stroke="#D4A017" stroke-width="5"/>
+          <line x1="100" y1="17"  x2="100" y2="111" stroke="#D4A017" stroke-width="3.5"/>
+          <clipPath id="scbot"><path d="M23,111 Q23,179 100,204 Q177,179 177,122 L177,111 Z"/></clipPath>
+          <g clip-path="url(#scbot)">
+            <rect x="23"  y="109" width="22" height="100" fill="#8B0000"/>
+            <rect x="45"  y="109" width="22" height="100" fill="#0D1B3E"/>
+            <rect x="67"  y="109" width="22" height="100" fill="#8B0000"/>
+            <rect x="89"  y="109" width="22" height="100" fill="#0D1B3E"/>
+            <rect x="111" y="109" width="22" height="100" fill="#8B0000"/>
+            <rect x="133" y="109" width="22" height="100" fill="#0D1B3E"/>
+            <rect x="155" y="109" width="22" height="100" fill="#8B0000"/>
+          </g>
+          <circle cx="100" cy="160" r="21" fill="white" stroke="#111" stroke-width="1.5"/>
+          <polygon points="100,142 108,148 105,158 95,158 92,148" fill="#111"/>
+          <polygon points="79,157 83,147 92,148 95,158 87,164"    fill="#111"/>
+          <polygon points="121,157 117,147 108,148 105,158 113,164" fill="#111"/>
+          <polygon points="86,175 87,164 95,158 105,158 113,164 114,175 100,181" fill="#111"/>
+          <rect x="46" y="101" width="108" height="22" fill="#0D1B3E" rx="2"/>
+          <text x="100" y="117" font-family="Arial Black,sans-serif" font-size="14" font-weight="900"
+                fill="#D4A017" text-anchor="middle" letter-spacing="4">BFC</text>
+          <g fill="#D4A017">
+            <rect x="83"  y="4"  width="7" height="13" rx="2"/>
+            <rect x="96"  y="1"  width="8" height="16" rx="2"/>
+            <rect x="110" y="4"  width="7" height="13" rx="2"/>
+            <circle cx="86"  cy="3"  r="3"/>
+            <circle cx="100" cy="0"  r="3"/>
+            <circle cx="114" cy="3"  r="3"/>
+          </g>
+        </svg>
+      </div>
       <div class="brand-text">
-        <div class="brand-name">BARA SOACHA</div>
+        <div class="brand-name">BARSA SOACHA</div>
         <div class="brand-tagline">Academia de Fútbol</div>
       </div>
     </div>
@@ -41,179 +90,146 @@
     <!-- Navegación -->
     <div class="sidebar-nav" role="navigation">
 
-      <!-- Principal -->
       <span class="nav-section-label">Principal</span>
-
-      <a href="dashboard.html" class="nav-link" data-page="dashboard.html">
-        <span class="nav-icon"><i class="fas fa-th-large" aria-hidden="true"></i></span>
+      <a href="./dashboard.html" class="nav-link" data-page="dashboard.html">
+        <span class="nav-icon"><i class="fas fa-th-large"></i></span>
         <span class="nav-label">Dashboard</span>
       </a>
 
-      <!-- Gestión académica -->
       <span class="nav-section-label">Academia</span>
-
       <a href="#" class="nav-link" data-page="alumnos.html">
-        <span class="nav-icon"><i class="fas fa-users" aria-hidden="true"></i></span>
+        <span class="nav-icon"><i class="fas fa-users"></i></span>
         <span class="nav-label">Alumnos</span>
         <span class="nav-badge" id="badgeStudents">—</span>
       </a>
-
       <a href="#" class="nav-link" data-page="categorias.html">
-        <span class="nav-icon"><i class="fas fa-layer-group" aria-hidden="true"></i></span>
+        <span class="nav-icon"><i class="fas fa-layer-group"></i></span>
         <span class="nav-label">Categorías</span>
       </a>
-
       <a href="#" class="nav-link" data-page="entrenadores.html">
-        <span class="nav-icon"><i class="fas fa-chalkboard-teacher" aria-hidden="true"></i></span>
+        <span class="nav-icon"><i class="fas fa-chalkboard-teacher"></i></span>
         <span class="nav-label">Entrenadores</span>
       </a>
 
-      <!-- Operaciones -->
       <span class="nav-section-label">Operaciones</span>
-
       <a href="#" class="nav-link" data-page="asistencia.html">
-        <span class="nav-icon"><i class="fas fa-clipboard-check" aria-hidden="true"></i></span>
+        <span class="nav-icon"><i class="fas fa-clipboard-check"></i></span>
         <span class="nav-label">Asistencia</span>
       </a>
-
       <a href="#" class="nav-link" data-page="pagos.html">
-        <span class="nav-icon"><i class="fas fa-credit-card" aria-hidden="true"></i></span>
+        <span class="nav-icon"><i class="fas fa-credit-card"></i></span>
         <span class="nav-label">Pagos</span>
         <span class="nav-badge" id="badgePayments" style="background:#dc3545;color:#fff">—</span>
       </a>
-
       <a href="#" class="nav-link" data-page="torneos.html">
-        <span class="nav-icon"><i class="fas fa-trophy" aria-hidden="true"></i></span>
+        <span class="nav-icon"><i class="fas fa-trophy"></i></span>
         <span class="nav-label">Torneos</span>
       </a>
-
       <a href="#" class="nav-link" data-page="agenda.html">
-        <span class="nav-icon"><i class="fas fa-calendar-alt" aria-hidden="true"></i></span>
+        <span class="nav-icon"><i class="fas fa-calendar-alt"></i></span>
         <span class="nav-label">Agenda</span>
       </a>
 
-      <!-- Comunicación -->
       <span class="nav-section-label">Comunicación</span>
-
       <a href="#" class="nav-link" data-page="comunicados.html">
-        <span class="nav-icon"><i class="fas fa-bullhorn" aria-hidden="true"></i></span>
+        <span class="nav-icon"><i class="fas fa-bullhorn"></i></span>
         <span class="nav-label">Comunicados</span>
       </a>
-
       <a href="#" class="nav-link" data-page="portal-padres.html">
-        <span class="nav-icon"><i class="fas fa-user-friends" aria-hidden="true"></i></span>
+        <span class="nav-icon"><i class="fas fa-user-friends"></i></span>
         <span class="nav-label">Portal Padres</span>
       </a>
 
-      <!-- Análisis -->
       <span class="nav-section-label">Análisis</span>
-
       <a href="#" class="nav-link" data-page="reportes.html">
-        <span class="nav-icon"><i class="fas fa-chart-bar" aria-hidden="true"></i></span>
+        <span class="nav-icon"><i class="fas fa-chart-bar"></i></span>
         <span class="nav-label">Reportes</span>
       </a>
 
-      <!-- Sistema -->
       <span class="nav-section-label">Sistema</span>
-
       <a href="#" class="nav-link" data-page="configuracion.html">
-        <span class="nav-icon"><i class="fas fa-cog" aria-hidden="true"></i></span>
+        <span class="nav-icon"><i class="fas fa-cog"></i></span>
         <span class="nav-label">Configuración</span>
       </a>
-
       <a href="#" class="nav-link" id="logoutBtn">
-        <span class="nav-icon"><i class="fas fa-sign-out-alt" aria-hidden="true"></i></span>
+        <span class="nav-icon"><i class="fas fa-sign-out-alt"></i></span>
         <span class="nav-label">Cerrar sesión</span>
       </a>
 
-    </div><!-- /sidebar-nav -->
-
-    <!-- Footer del sidebar -->
-    <div class="sidebar-footer">
-      <p class="sidebar-version">Bara Soacha v1.0.0 · Firebase</p>
     </div>
 
-  </nav><!-- /sidebar -->
+    <div class="sidebar-footer">
+      <p class="sidebar-version">Barsa Soacha v1.1.0 · Firebase</p>
+    </div>
+
+  </nav>
 
   <!-- Overlay móvil -->
-  <div id="sidebarOverlay" class="sidebar-overlay" role="presentation"></div>
+  <div id="sidebarOverlay" class="sidebar-overlay"></div>
 
-  <!-- ────────────────────── MAIN CONTENT ────────────────────── -->
+  <!-- ══════════════════ MAIN ══════════════════ -->
   <div class="main-content" id="mainContent">
 
-    <!-- ── NAVBAR SUPERIOR ── -->
-    <header class="top-navbar" role="banner">
-
-      <!-- Toggle sidebar -->
-      <button id="sidebarToggle" aria-label="Abrir/cerrar menú lateral" title="Menú">
-        <i class="fas fa-bars" aria-hidden="true"></i>
+    <!-- Navbar superior -->
+    <header class="top-navbar">
+      <button id="sidebarToggle" aria-label="Menú">
+        <i class="fas fa-bars"></i>
       </button>
 
-      <!-- Búsqueda -->
-      <div class="navbar-search" role="search">
+      <div class="navbar-search">
         <div class="search-input-wrap">
-          <i class="fas fa-search" aria-hidden="true"></i>
-          <input type="search" placeholder="Buscar alumno, pago, evento…" aria-label="Búsqueda global" id="globalSearch">
+          <i class="fas fa-search"></i>
+          <input type="search" placeholder="Buscar alumno, pago, evento…" id="globalSearch">
         </div>
       </div>
 
-      <!-- Acciones -->
-      <div class="navbar-actions" role="toolbar" aria-label="Acciones">
+      <div class="navbar-actions">
+        <span class="live-clock" id="liveClock">--:--:--</span>
 
-        <!-- Reloj -->
-        <span class="live-clock" id="liveClock" aria-live="off">--:--:--</span>
-
-        <!-- Modo oscuro -->
-        <button class="nav-action-btn" id="darkModeBtn" aria-label="Cambiar tema" title="Modo oscuro/claro">
-          <i class="fas fa-moon" id="themeIcon" aria-hidden="true"></i>
+        <button class="nav-action-btn" id="darkModeBtn" aria-label="Cambiar tema">
+          <i class="fas fa-moon" id="themeIcon"></i>
         </button>
 
-        <!-- Notificaciones -->
-        <button class="nav-action-btn" aria-label="Notificaciones" title="Notificaciones">
-          <i class="fas fa-bell" aria-hidden="true"></i>
-          <span class="notif-dot" aria-hidden="true"></span>
+        <button class="nav-action-btn" aria-label="Notificaciones">
+          <i class="fas fa-bell"></i>
+          <span class="notif-dot"></span>
         </button>
 
-        <div class="navbar-divider" role="separator"></div>
+        <div class="navbar-divider"></div>
 
-        <!-- Usuario -->
-        <button class="user-menu-btn" id="userMenuBtn" aria-label="Menú de usuario" aria-haspopup="true">
+        <button class="user-menu-btn" id="userMenuBtn">
           <div class="nav-avatar" id="navAvatar">?</div>
           <div class="user-info">
             <div class="user-name" id="navUserName">Cargando…</div>
             <div class="user-role" id="navUserRole"></div>
           </div>
-          <i class="fas fa-chevron-down ms-1" style="font-size:10px;color:var(--text-muted)" aria-hidden="true"></i>
+          <i class="fas fa-chevron-down ms-1" style="font-size:10px;color:var(--text-muted)"></i>
         </button>
-
       </div>
-    </header><!-- /top-navbar -->
+    </header>
 
-    <!-- ── PÁGINA: DASHBOARD ── -->
-    <main class="page-body" id="dashboardPage" role="main">
+    <!-- Cuerpo del dashboard -->
+    <main class="page-body" id="dashboardPage">
 
-      <!-- Encabezado de página -->
+      <!-- Encabezado -->
       <div class="page-header d-flex justify-content-between align-items-start flex-wrap gap-3">
         <div>
           <h1 class="greeting-text" id="dashGreeting">Bienvenido 👋</h1>
           <p class="date-text" id="dashDate"></p>
         </div>
-        <div class="d-flex gap-2">
-          <button class="btn-outline-bara" onclick="window.location.href='#asistencia'">
-            <i class="fas fa-clipboard-check" aria-hidden="true"></i>
-            Pasar asistencia
+        <div class="d-flex gap-2 flex-wrap">
+          <button class="btn-outline-bara">
+            <i class="fas fa-clipboard-check"></i> Pasar asistencia
           </button>
-          <button class="btn-primary-bara" onclick="window.location.href='#nuevo-alumno'">
-            <i class="fas fa-user-plus" aria-hidden="true"></i>
-            Nuevo alumno
+          <button class="btn-primary-bara">
+            <i class="fas fa-user-plus"></i> Nuevo alumno
           </button>
         </div>
       </div>
 
-      <!-- ── STAT CARDS (cargadas dinámicamente) ── -->
-      <section aria-label="Indicadores principales">
+      <!-- Stat cards (dinámicas) -->
+      <section aria-label="Indicadores">
         <div id="statsContainer">
-          <!-- Skeletons mientras carga Firebase -->
           <div class="skeleton-stat"><div class="sk-icon"></div><div class="sk-text"><div class="sk-line w-50"></div><div class="sk-line w-75"></div></div></div>
           <div class="skeleton-stat"><div class="sk-icon"></div><div class="sk-text"><div class="sk-line w-50"></div><div class="sk-line w-75"></div></div></div>
           <div class="skeleton-stat"><div class="sk-icon"></div><div class="sk-text"><div class="sk-line w-50"></div><div class="sk-line w-75"></div></div></div>
@@ -222,89 +238,65 @@
         </div>
       </section>
 
-      <!-- ── GRÁFICAS ── -->
-      <section aria-label="Gráficas estadísticas" class="charts-grid mt-0">
+      <!-- Gráficas -->
+      <section class="charts-grid mt-0" aria-label="Gráficas">
 
-        <!-- Asistencia semanal -->
         <div class="card-bara">
           <div class="card-header-bara">
-            <span class="card-title-bara">
-              <i class="fas fa-chart-bar" aria-hidden="true"></i>
-              Asistencia últimos 7 días
-            </span>
+            <span class="card-title-bara"><i class="fas fa-chart-bar"></i> Asistencia últimos 7 días</span>
           </div>
           <div class="card-body-bara">
             <div class="chart-container">
-              <canvas id="chartAttendance" aria-label="Gráfica de asistencia semanal" role="img"></canvas>
+              <canvas id="chartAttendance"></canvas>
             </div>
           </div>
         </div>
 
-        <!-- Estado de pagos -->
         <div class="card-bara">
           <div class="card-header-bara">
-            <span class="card-title-bara">
-              <i class="fas fa-credit-card" aria-hidden="true"></i>
-              Estado de pagos
-            </span>
+            <span class="card-title-bara"><i class="fas fa-credit-card"></i> Estado de pagos</span>
           </div>
           <div class="card-body-bara">
             <div class="chart-container">
-              <canvas id="chartPayments" aria-label="Distribución de pagos" role="img"></canvas>
+              <canvas id="chartPayments"></canvas>
             </div>
           </div>
         </div>
 
-        <!-- Alumnos por categoría -->
         <div class="card-bara">
           <div class="card-header-bara">
-            <span class="card-title-bara">
-              <i class="fas fa-users" aria-hidden="true"></i>
-              Alumnos por categoría
-            </span>
+            <span class="card-title-bara"><i class="fas fa-users"></i> Alumnos por categoría</span>
           </div>
           <div class="card-body-bara">
             <div class="chart-container">
-              <canvas id="chartCategories" aria-label="Alumnos por categoría" role="img"></canvas>
+              <canvas id="chartCategories"></canvas>
             </div>
           </div>
         </div>
 
       </section>
 
-      <!-- ── WIDGETS INFERIORES ── -->
+      <!-- Widgets inferiores -->
       <div class="dashboard-grid mt-4">
 
-        <!-- Próximos eventos -->
         <div class="card-bara">
           <div class="card-header-bara">
-            <span class="card-title-bara">
-              <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-              Próximos eventos
-            </span>
-            <a href="#" style="font-size:12px;color:var(--color-primary);font-weight:600;">
-              Ver agenda completa
-            </a>
+            <span class="card-title-bara"><i class="fas fa-calendar-alt"></i> Próximos eventos</span>
+            <a href="#" style="font-size:12px;color:var(--color-primary);font-weight:600">Ver agenda →</a>
           </div>
           <div class="card-body-bara">
             <div id="upcomingEvents">
-              <!-- Skeleton -->
               <div class="skeleton-row"><div class="sk-circle"></div><div class="sk-text"><div class="sk-line w-60"></div><div class="sk-line w-40"></div></div></div>
               <div class="skeleton-row" style="margin-top:12px"><div class="sk-circle"></div><div class="sk-text"><div class="sk-line w-75"></div><div class="sk-line w-50"></div></div></div>
             </div>
           </div>
         </div>
 
-        <!-- Panel lateral derecho -->
         <div class="d-flex flex-column gap-4">
 
-          <!-- Comunicados recientes -->
           <div class="card-bara">
             <div class="card-header-bara">
-              <span class="card-title-bara">
-                <i class="fas fa-bullhorn" aria-hidden="true"></i>
-                Comunicados recientes
-              </span>
+              <span class="card-title-bara"><i class="fas fa-bullhorn"></i> Comunicados recientes</span>
             </div>
             <div class="card-body-bara">
               <div id="recentAnnouncements">
@@ -313,58 +305,51 @@
             </div>
           </div>
 
-          <!-- Acceso rápido -->
           <div class="card-bara">
             <div class="card-header-bara">
-              <span class="card-title-bara">
-                <i class="fas fa-bolt" aria-hidden="true"></i>
-                Acceso rápido
-              </span>
+              <span class="card-title-bara"><i class="fas fa-bolt"></i> Acceso rápido</span>
             </div>
             <div class="card-body-bara">
               <div class="d-grid gap-2">
                 <button class="btn-outline-bara w-100 justify-content-start" style="padding:10px 14px">
-                  <i class="fas fa-user-plus" aria-hidden="true"></i> Registrar alumno
+                  <i class="fas fa-user-plus"></i> Registrar alumno
                 </button>
                 <button class="btn-outline-bara w-100 justify-content-start" style="padding:10px 14px">
-                  <i class="fas fa-clipboard-check" aria-hidden="true"></i> Pasar asistencia
+                  <i class="fas fa-clipboard-check"></i> Pasar asistencia
                 </button>
                 <button class="btn-outline-bara w-100 justify-content-start" style="padding:10px 14px">
-                  <i class="fas fa-dollar-sign" aria-hidden="true"></i> Registrar pago
+                  <i class="fas fa-dollar-sign"></i> Registrar pago
                 </button>
                 <button class="btn-outline-bara w-100 justify-content-start" style="padding:10px 14px">
-                  <i class="fas fa-bullhorn" aria-hidden="true"></i> Nuevo comunicado
+                  <i class="fas fa-bullhorn"></i> Nuevo comunicado
                 </button>
               </div>
             </div>
           </div>
 
         </div>
-      </div><!-- /dashboard-grid -->
+      </div>
 
-    </main><!-- /page-body -->
-  </div><!-- /main-content -->
+    </main>
+  </div>
+</div>
 
-</div><!-- /app-shell -->
-
-<!-- ── Loader global ─────────────────────────────────────────────────────── -->
-<div id="globalLoader" role="status" aria-live="polite" aria-label="Cargando">
-  <div class="loader-ball" aria-hidden="true"></div>
+<!-- Loader global -->
+<div id="globalLoader" role="status" aria-live="polite">
+  <div class="loader-ball"></div>
   <p id="loaderMessage">Cargando panel…</p>
 </div>
 
-<!-- ── Scripts de terceros ───────────────────────────────────────────────── -->
+<!-- Scripts CDN -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.12.4/sweetalert2.all.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.3/chart.umd.min.js"></script>
 
-<!-- ── Módulos ES ─────────────────────────────────────────────────────────── -->
+<!-- Módulo principal — RUTA PLANA -->
 <script type="module">
-  // Importar e inicializar el dashboard
-  import { initDashboard } from './js/dashboard.js';
+  import { initDashboard } from './dashboard.js';
 
   document.addEventListener('DOMContentLoaded', () => {
-    // initDashboard verifica Auth, carga Firestore y renderiza todo
     initDashboard().catch(err => {
       console.error('[Dashboard] Error fatal:', err);
       if (window.Swal) {

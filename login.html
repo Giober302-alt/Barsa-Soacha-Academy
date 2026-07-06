@@ -3,63 +3,102 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Bara Soacha Academy — Sistema de gestión de academia de fútbol">
+  <title>Iniciar sesión — Barsa Soacha Academy</title>
   <meta name="theme-color" content="#8B0000">
-  <title>Iniciar sesión — Bara Soacha Academy</title>
 
-  <!-- Preconexiones para carga rápida -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-
-  <!-- Fuentes -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Bebas+Neue&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-  <!-- Bootstrap 5 -->
+  <!-- Librerías CDN -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Font Awesome -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
-  <!-- SweetAlert2 -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.12.4/sweetalert2.min.css" rel="stylesheet">
 
-  <!-- Estilos propios -->
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/responsive.css">
-
-  <style>
-    /* Estilos exclusivos de login.html */
-    .login-page { min-height: 100vh; display: flex; }
-  </style>
+  <!-- CSS propios — ESTRUCTURA PLANA: sin carpeta css/ -->
+  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./responsive.css">
 </head>
 <body>
 
-<!-- ───────────────────────────── LOGIN PAGE ───────────────────────────────── -->
 <div class="login-page">
 
-  <!-- Panel izquierdo: identidad visual -->
+  <!-- ── Panel izquierdo: identidad visual ── -->
   <aside class="login-brand-panel">
     <div class="login-brand-content">
 
-      <!-- Logo Bara Soacha -->
-      <div class="login-logo" aria-hidden="true">BS</div>
+      <!-- Logo escudo SVG embebido -->
+      <div class="login-logo" style="background:transparent;box-shadow:none;width:130px;height:auto">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 220" style="width:130px;filter:drop-shadow(0 6px 20px rgba(0,0,0,.6))">
+          <defs>
+            <linearGradient id="g1" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" style="stop-color:#F5D060"/>
+              <stop offset="50%" style="stop-color:#D4A017"/>
+              <stop offset="100%" style="stop-color:#A07010"/>
+            </linearGradient>
+          </defs>
+          <path d="M100,8 L185,35 L185,122 Q185,186 100,213 Q15,186 15,122 L15,35 Z" fill="url(#g1)"/>
+          <path d="M100,17 L177,43 L177,122 Q177,179 100,204 Q23,179 23,122 L23,43 Z" fill="#0D1B3E"/>
+          <clipPath id="ctl2"><path d="M23,17 L100,17 L100,111 L23,111 Z"/></clipPath>
+          <g clip-path="url(#ctl2)">
+            <rect x="23" y="17" width="77" height="94" fill="#8B0000"/>
+            <rect x="28"  y="17" width="11" height="94" fill="#D4A017" opacity=".75"/>
+            <rect x="50"  y="17" width="11" height="94" fill="#D4A017" opacity=".75"/>
+            <rect x="72"  y="17" width="11" height="94" fill="#D4A017" opacity=".75"/>
+          </g>
+          <clipPath id="ctr2"><path d="M100,17 L177,17 L177,111 L100,111 Z"/></clipPath>
+          <g clip-path="url(#ctr2)">
+            <rect x="100" y="17" width="77" height="94" fill="#FFFFFF"/>
+            <rect x="135" y="17" width="6"  height="94" fill="#C0001A" opacity=".6"/>
+            <rect x="100" y="52" width="77" height="6"  fill="#C0001A" opacity=".6"/>
+          </g>
+          <line x1="23" y1="111" x2="177" y2="111" stroke="#D4A017" stroke-width="4"/>
+          <line x1="100" y1="17"  x2="100" y2="111" stroke="#D4A017" stroke-width="3"/>
+          <clipPath id="cbot2"><path d="M23,111 Q23,179 100,204 Q177,179 177,122 L177,111 Z"/></clipPath>
+          <g clip-path="url(#cbot2)">
+            <rect x="23"  y="109" width="22" height="100" fill="#8B0000"/>
+            <rect x="45"  y="109" width="22" height="100" fill="#0D1B3E"/>
+            <rect x="67"  y="109" width="22" height="100" fill="#8B0000"/>
+            <rect x="89"  y="109" width="22" height="100" fill="#0D1B3E"/>
+            <rect x="111" y="109" width="22" height="100" fill="#8B0000"/>
+            <rect x="133" y="109" width="22" height="100" fill="#0D1B3E"/>
+            <rect x="155" y="109" width="22" height="100" fill="#8B0000"/>
+          </g>
+          <circle cx="100" cy="160" r="21" fill="white" stroke="#111" stroke-width="1.5"/>
+          <polygon points="100,142 108,148 105,158 95,158 92,148" fill="#111"/>
+          <polygon points="79,157 83,147 92,148 95,158 87,164"    fill="#111"/>
+          <polygon points="121,157 117,147 108,148 105,158 113,164" fill="#111"/>
+          <polygon points="86,175 87,164 95,158 105,158 113,164 114,175 100,181" fill="#111"/>
+          <rect x="46" y="101" width="108" height="22" fill="#0D1B3E" rx="2"/>
+          <text x="100" y="117" font-family="Arial Black,sans-serif" font-size="14" font-weight="900"
+                fill="#D4A017" text-anchor="middle" letter-spacing="4">BFC</text>
+          <g fill="#D4A017">
+            <rect x="83"  y="4"  width="7" height="13" rx="2"/>
+            <rect x="96"  y="1"  width="8" height="16" rx="2"/>
+            <rect x="110" y="4"  width="7" height="13" rx="2"/>
+            <circle cx="86"  cy="3"  r="3"/>
+            <circle cx="100" cy="0"  r="3"/>
+            <circle cx="114" cy="3"  r="3"/>
+          </g>
+        </svg>
+      </div>
 
-      <h1 class="login-brand-name">BARA SOACHA</h1>
+      <h1 class="login-brand-name">BARSA SOACHA</h1>
       <p class="login-brand-sub">Academia de Fútbol</p>
 
-      <!-- Features del sistema -->
-      <ul class="login-features" aria-label="Características del sistema">
-        <li><i class="fas fa-users-cog" aria-hidden="true"></i> Gestión completa de alumnos</li>
-        <li><i class="fas fa-clipboard-check" aria-hidden="true"></i> Control de asistencia en tiempo real</li>
-        <li><i class="fas fa-credit-card" aria-hidden="true"></i> Administración de pagos y mensualidades</li>
-        <li><i class="fas fa-trophy" aria-hidden="true"></i> Gestión de torneos y partidos</li>
-        <li><i class="fas fa-chart-line" aria-hidden="true"></i> Reportes y estadísticas avanzadas</li>
-        <li><i class="fas fa-bell" aria-hidden="true"></i> Comunicados a padres de familia</li>
+      <ul class="login-features">
+        <li><i class="fas fa-users-cog"></i> Gestión completa de alumnos</li>
+        <li><i class="fas fa-clipboard-check"></i> Control de asistencia en tiempo real</li>
+        <li><i class="fas fa-credit-card"></i> Administración de pagos</li>
+        <li><i class="fas fa-trophy"></i> Torneos y partidos</li>
+        <li><i class="fas fa-chart-line"></i> Reportes y estadísticas</li>
+        <li><i class="fas fa-bell"></i> Comunicados a padres</li>
       </ul>
 
     </div>
   </aside>
 
-  <!-- Panel derecho: formulario -->
+  <!-- ── Panel derecho: formulario ── -->
   <main class="login-form-panel">
     <div class="login-card" id="loginCard">
 
@@ -68,58 +107,40 @@
         <p class="login-subtitle">Inicia sesión para acceder al panel de administración.</p>
       </header>
 
-      <!-- Formulario de inicio de sesión -->
       <form id="loginForm" novalidate autocomplete="off">
 
-        <!-- Email -->
         <div class="form-group-bara">
           <label class="form-label-bara" for="loginEmail">Correo electrónico</label>
           <div class="input-icon-wrap">
-            <i class="fas fa-envelope input-icon" aria-hidden="true"></i>
-            <input
-              type="email"
-              id="loginEmail"
-              class="form-control-bara"
-              placeholder="tu@correo.com"
-              autocomplete="email"
-              required
-              aria-required="true"
-            >
+            <i class="fas fa-envelope input-icon"></i>
+            <input type="email" id="loginEmail" class="form-control-bara"
+              placeholder="tu@correo.com" autocomplete="email" required>
           </div>
         </div>
 
-        <!-- Contraseña -->
         <div class="form-group-bara">
           <div class="d-flex justify-content-between align-items-center mb-1">
             <label class="form-label-bara mb-0" for="loginPassword">Contraseña</label>
-            <button type="button" id="forgotPasswordBtn" class="btn-link-bara"
-              style="font-size:12px;color:var(--color-primary);background:none;border:none;cursor:pointer;">
+            <button type="button" id="forgotPasswordBtn"
+              style="font-size:12px;color:var(--color-primary);background:none;border:none;cursor:pointer;padding:0">
               ¿Olvidaste tu contraseña?
             </button>
           </div>
           <div class="input-icon-wrap">
-            <i class="fas fa-lock input-icon" aria-hidden="true"></i>
-            <input
-              type="password"
-              id="loginPassword"
-              class="form-control-bara"
-              placeholder="••••••••"
-              autocomplete="current-password"
-              required
-              aria-required="true"
-            >
+            <i class="fas fa-lock input-icon"></i>
+            <input type="password" id="loginPassword" class="form-control-bara"
+              placeholder="••••••••" autocomplete="current-password" required>
             <button type="button" class="toggle-password" id="togglePassword" aria-label="Mostrar contraseña">
               <i class="fas fa-eye"></i>
             </button>
           </div>
         </div>
 
-        <!-- Submit -->
         <button type="submit" class="btn-login" id="loginBtn">
           <span id="loginBtnText">Ingresar al sistema</span>
-          <i class="fas fa-arrow-right" id="loginBtnIcon" aria-hidden="true"></i>
+          <i class="fas fa-arrow-right" id="loginBtnIcon"></i>
           <span id="loginSpinner" class="d-none">
-            <i class="fas fa-circle-notch fa-spin" aria-hidden="true"></i>
+            <i class="fas fa-circle-notch fa-spin"></i>
           </span>
         </button>
 
@@ -129,63 +150,52 @@
       <div class="demo-section">
         <p class="demo-label">Acceso rápido — Demo</p>
         <div class="demo-grid">
-
           <button type="button" class="demo-btn" id="demoAdmin"
-            data-email="admin@barasoacha.co" data-password="Admin2025*">
-            <i class="fas fa-user-shield"></i>
-            Administrador
+            data-email="admin@barsa.co" data-password="Admin2025*">
+            <i class="fas fa-user-shield"></i> Administrador
           </button>
-
           <button type="button" class="demo-btn" id="demoCoach"
-            data-email="carlos@barasoacha.co" data-password="Carlos123*">
-            <i class="fas fa-whistle"></i>
-            Entrenador
+            data-email="coach@barsa.co" data-password="Coach123*">
+            <i class="fas fa-whistle"></i> Entrenador
           </button>
-
           <button type="button" class="demo-btn" id="demoParent"
-            data-email="padre@barasoacha.co" data-password="Padre123*">
-            <i class="fas fa-user-friends"></i>
-            Padre
+            data-email="padre@barsa.co" data-password="Padre123*">
+            <i class="fas fa-user-friends"></i> Padre
           </button>
-
         </div>
       </div>
 
-      <!-- Footer -->
-      <footer style="text-align:center;margin-top:28px;">
-        <p style="font-size:11px;color:var(--text-muted);">
-          Bara Soacha Academy &copy; 2025 · v1.0.0 · Licencia MIT
+      <footer style="text-align:center;margin-top:24px">
+        <p style="font-size:11px;color:var(--text-muted)">
+          Barsa Soacha Academy &copy; 2025 · v1.1.0 · Licencia MIT
         </p>
       </footer>
 
     </div>
   </main>
 
-</div>
+</div><!-- /login-page -->
 
-<!-- ── SweetAlert2 ──────────────────────────────────────────────────────── -->
+<!-- Scripts CDN -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.12.4/sweetalert2.all.min.js"></script>
 
-<!-- ── Módulos ES — Firebase + App ─────────────────────────────────────── -->
+<!-- Módulos ES — RUTAS PLANAS: sin carpeta js/ -->
 <script type="module">
-  import { auth, db, COLLECTIONS }      from './js/firebase-config.js';
+  import { auth, db }              from './firebase-config.js';
   import { login, sendPasswordReset,
-           onSessionChange }            from './js/auth.js';
-  import { applyTheme }                 from './js/app.js';
+           onSessionChange }        from './auth.js';
+  import { applyTheme }            from './app.js';
 
-  // ── Aplicar tema guardado ──────────────────────────────────────────────
-  const savedTheme = localStorage.getItem('bara_theme') || 'light';
-  applyTheme(savedTheme);
+  // Aplicar tema guardado
+  applyTheme(localStorage.getItem('barsa_theme') || 'light');
 
-  // ── Si ya hay sesión activa, redirigir al dashboard ─────────────────────
-  const unsubscribe = onSessionChange((user, profile) => {
-    unsubscribe();
-    if (user && profile) {
-      window.location.href = './dashboard.html';
-    }
+  // Si ya hay sesión → ir al dashboard
+  const unsub = onSessionChange((user, profile) => {
+    unsub();
+    if (user && profile) window.location.href = './dashboard.html';
   });
 
-  // ── Animar tarjeta de login al cargar ──────────────────────────────────
+  // Animar tarjeta al cargar
   const card = document.getElementById('loginCard');
   if (card) {
     card.style.cssText = 'opacity:0;transform:translateY(24px)';
@@ -194,42 +204,37 @@
     }, 120);
   }
 
-  // ── Formulario de login ────────────────────────────────────────────────
-  const form       = document.getElementById('loginForm');
-  const emailInput = document.getElementById('loginEmail');
-  const pwdInput   = document.getElementById('loginPassword');
-  const loginBtn   = document.getElementById('loginBtn');
-  const btnText    = document.getElementById('loginBtnText');
-  const btnIcon    = document.getElementById('loginBtnIcon');
-  const spinner    = document.getElementById('loginSpinner');
+  // ── Formulario ──
+  const form    = document.getElementById('loginForm');
+  const emailIn = document.getElementById('loginEmail');
+  const pwdIn   = document.getElementById('loginPassword');
+  const loginBtn= document.getElementById('loginBtn');
+  const btnTxt  = document.getElementById('loginBtnText');
+  const btnIco  = document.getElementById('loginBtnIcon');
+  const spinner = document.getElementById('loginSpinner');
 
-  const setLoading = (loading) => {
-    loginBtn.disabled = loading;
-    btnText.textContent = loading ? 'Ingresando…' : 'Ingresar al sistema';
-    btnIcon.classList.toggle('d-none', loading);
-    spinner.classList.toggle('d-none', !loading);
+  const setLoading = (on) => {
+    loginBtn.disabled    = on;
+    btnTxt.textContent   = on ? 'Ingresando…' : 'Ingresar al sistema';
+    btnIco.classList.toggle('d-none', on);
+    spinner.classList.toggle('d-none', !on);
   };
 
   form?.addEventListener('submit', async (e) => {
     e.preventDefault();
-
-    const email    = emailInput.value.trim();
-    const password = pwdInput.value;
-
-    if (!email || !password) {
+    const email = emailIn.value.trim();
+    const pwd   = pwdIn.value;
+    if (!email || !pwd) {
       Swal.fire({ toast:true, position:'top-end', icon:'warning',
         title:'Completa todos los campos', showConfirmButton:false, timer:2500 });
       return;
     }
-
     setLoading(true);
-
-    const result = await login(email, password);
-
+    const result = await login(email, pwd);
     if (result.success) {
       Swal.fire({ toast:true, position:'top-end', icon:'success',
-        title:`¡Bienvenido, ${result.profile.displayName?.split(' ')[0] || ''}!`,
-        showConfirmButton:false, timer:1500 });
+        title:`¡Bienvenido, ${result.profile?.displayName?.split(' ')[0] || ''}!`,
+        showConfirmButton:false, timer:1200 });
       setTimeout(() => { window.location.href = './dashboard.html'; }, 900);
     } else {
       setLoading(false);
@@ -240,44 +245,35 @@
     }
   });
 
-  // ── Toggle de contraseña ───────────────────────────────────────────────
-  document.getElementById('togglePassword')?.addEventListener('click', function () {
-    const isText = pwdInput.type === 'text';
-    pwdInput.type = isText ? 'password' : 'text';
+  // Toggle contraseña
+  document.getElementById('togglePassword')?.addEventListener('click', function() {
+    const isText = pwdIn.type === 'text';
+    pwdIn.type = isText ? 'password' : 'text';
     this.querySelector('i').className = isText ? 'fas fa-eye' : 'fas fa-eye-slash';
   });
 
-  // ── Olvidé mi contraseña ───────────────────────────────────────────────
+  // Olvidé contraseña
   document.getElementById('forgotPasswordBtn')?.addEventListener('click', async () => {
     const { value: email } = await Swal.fire({
-      title: 'Restablecer contraseña',
-      input: 'email',
-      inputLabel: 'Correo electrónico registrado',
-      inputPlaceholder: 'tu@correo.com',
-      confirmButtonColor: '#8B0000',
-      confirmButtonText: 'Enviar enlace',
-      showCancelButton: true,
-      cancelButtonText: 'Cancelar'
+      title:'Restablecer contraseña', input:'email',
+      inputLabel:'Correo electrónico registrado', inputPlaceholder:'tu@correo.com',
+      confirmButtonColor:'#8B0000', confirmButtonText:'Enviar enlace',
+      showCancelButton:true, cancelButtonText:'Cancelar'
     });
-
     if (email) {
-      const result = await sendPasswordReset(email);
-      Swal.fire({
-        toast: true, position: 'top-end',
-        icon:  result.success ? 'success' : 'error',
-        title: result.success
-          ? 'Enlace enviado. Revisa tu correo.'
-          : result.error,
-        showConfirmButton: false, timer: 4000
-      });
+      const r = await sendPasswordReset(email);
+      Swal.fire({ toast:true, position:'top-end',
+        icon: r.success ? 'success' : 'error',
+        title: r.success ? 'Enlace enviado. Revisa tu correo.' : r.error,
+        showConfirmButton:false, timer:4000 });
     }
   });
 
-  // ── Botones de acceso demo ─────────────────────────────────────────────
+  // Botones demo
   document.querySelectorAll('.demo-btn').forEach(btn => {
     btn.addEventListener('click', () => {
-      emailInput.value = btn.dataset.email;
-      pwdInput.value   = btn.dataset.password;
+      emailIn.value = btn.dataset.email;
+      pwdIn.value   = btn.dataset.password;
       form.dispatchEvent(new Event('submit'));
     });
   });

@@ -1,6 +1,7 @@
 /**
  * @file firebase-config.js
- * @description Configuración central de Firebase para Bara Soacha Academy.
+ * @description Configuración central de Firebase para Barsa Soacha Academy.
+ *              ESTRUCTURA PLANA: todos los archivos en la raíz del repositorio.
  *
  *  ╔══════════════════════════════════════════════════════════════════╗
  *  ║  INSTRUCCIONES DE CONFIGURACIÓN                                 ║
@@ -13,69 +14,33 @@
  *  ╚══════════════════════════════════════════════════════════════════╝
  *
  * @module FirebaseConfig
- * @version 1.0.0
+ * @version 1.1.0
  */
 
-import { initializeApp }        from 'https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js';
-import { getAuth }              from 'https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js';
-import { getFirestore }         from 'https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js';
-import { getStorage }           from 'https://www.gstatic.com/firebasejs/11.10.0/firebase-storage.js';
-import { getMessaging,
-         isSupported }          from 'https://www.gstatic.com/firebasejs/11.10.0/firebase-messaging.js';
+import { initializeApp }   from 'https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js';
+import { getAuth }         from 'https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js';
+import { getFirestore }    from 'https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js';
+import { getStorage }      from 'https://www.gstatic.com/firebasejs/11.10.0/firebase-storage.js';
 
-// ─── Credenciales del proyecto Firebase ──────────────────────────────────────
-// ⚠  Reemplaza estos valores con los de tu proyecto Firebase.
-// ⚠  Para producción, mueve estas credenciales a variables de entorno
-//    o usa un archivo .env con un bundler (Vite/Webpack).
+// ─── ⚠️ REEMPLAZA ESTOS VALORES CON LOS DE TU PROYECTO FIREBASE ─────────────
 const FIREBASE_CONFIG = {
-  apiKey: "AIzaSyAEvI3p3jP6Mgc4iCka1Wd_1FdhF9Bx7ZQ",
+ apiKey: "AIzaSyAEvI3p3jP6Mgc4iCka1Wd_1FdhF9Bx7ZQ",
   authDomain: "barsa-soacha.firebaseapp.com",
   projectId: "barsa-soacha",
   storageBucket: "barsa-soacha.firebasestorage.app",
   messagingSenderId: "588228650490",
   appId: "1:588228650490:web:0e00c78acdbb8bc1d1b043"
 };  
+// ─────────────────────────────────────────────────────────────────────────────
 
-// ─── Inicialización de Firebase ───────────────────────────────────────────────
+// ─── Inicialización ────────────────────────────────────────────────────────────
 const firebaseApp = initializeApp(FIREBASE_CONFIG);
 
-// ─── Servicios exportados ─────────────────────────────────────────────────────
-
-/** Instancia de Firebase Authentication */
 export const auth    = getAuth(firebaseApp);
-
-/** Instancia de Cloud Firestore */
 export const db      = getFirestore(firebaseApp);
-
-/** Instancia de Firebase Storage */
 export const storage = getStorage(firebaseApp);
 
-/**
- * Instancia de Firebase Cloud Messaging.
- * Se inicializa de forma asíncrona porque requiere verificar soporte del navegador.
- * Preparado para notificaciones push en versiones futuras.
- * @type {Promise<import('firebase/messaging').Messaging|null>}
- */
-export const messagingPromise = (async () => {
-  try {
-    const supported = await isSupported();
-    if (!supported) {
-      console.info('[FCM] Messaging no soportado en este navegador.');
-      return null;
-    }
-    const { getMessaging: gm } = await import('https://www.gstatic.com/firebasejs/11.10.0/firebase-messaging.js');
-    return gm(firebaseApp);
-  } catch (err) {
-    console.warn('[FCM] No se pudo inicializar Messaging:', err);
-    return null;
-  }
-})();
-
-// ─── Colecciones de Firestore (nombres centralizados) ────────────────────────
-/**
- * Mapa de nombres de colecciones de Firestore.
- * Centralizar aquí evita errores de tipeo y facilita refactoring.
- */
+// ─── Colecciones de Firestore ─────────────────────────────────────────────────
 export const COLLECTIONS = {
   USERS:         'users',
   STUDENTS:      'students',
@@ -93,15 +58,11 @@ export const COLLECTIONS = {
 };
 
 // ─── Roles del sistema ────────────────────────────────────────────────────────
-/**
- * Roles disponibles en la aplicación.
- * El campo `level` define la jerarquía de permisos (mayor = más privilegios).
- */
 export const ROLES = {
-  ADMIN:       { key: 'admin',       label: 'Administrador',   level: 4 },
-  COORDINATOR: { key: 'coordinator', label: 'Coordinador',     level: 3 },
-  COACH:       { key: 'coach',       label: 'Entrenador',      level: 2 },
-  PARENT:      { key: 'parent',      label: 'Padre de familia',level: 1 }
+  ADMIN:       { key: 'admin',       label: 'Administrador',    level: 4 },
+  COORDINATOR: { key: 'coordinator', label: 'Coordinador',      level: 3 },
+  COACH:       { key: 'coach',       label: 'Entrenador',       level: 2 },
+  PARENT:      { key: 'parent',      label: 'Padre de familia', level: 1 }
 };
 
 export default firebaseApp;
